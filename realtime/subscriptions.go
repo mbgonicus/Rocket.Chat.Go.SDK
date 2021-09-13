@@ -25,7 +25,7 @@ func (c *Client) Sub(name string, args ...interface{}) (chan string, error) {
 	}
 
 	msgChannel := make(chan string, default_buffer_size)
-	c.ddp.CollectionByName("stream-room-messages").AddUpdateListener(genericExtractor{msgChannel, "update"})
+	c.ddp.CollectionByName("stream-notify-logged").AddUpdateListener(genericExtractor{msgChannel, "update"})
 
 	return msgChannel, nil
 }

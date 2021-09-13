@@ -36,7 +36,6 @@ type genericExtractor struct {
 }
 
 func (u genericExtractor) CollectionUpdate(collection, operation, id string, doc ddp.Update) {
-	if operation == u.operation {
-		u.messageChannel <- fmt.Sprintf("%s -> update", collection)
-	}
+	log.Println("Collection update", collection, operation, id, doc)
+	u.messageChannel <- fmt.Sprintf("%s -> update", collection)
 }
